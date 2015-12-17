@@ -230,7 +230,7 @@ define([
             this.addGraphicsLayer();
 
             this.tabContainer.watch('selectedChildWidget', lang.hitch(this, function () {
-                this.cancelDrawing();
+                this.stopDrawing();
             }));
 
             if (this.map.infoWindow) {
@@ -867,6 +867,11 @@ define([
                     this.doSpatialSearch();
                 }
             }
+        },
+
+        stopDrawing: function () {
+            this.cancelDrawing();
+            this.connectMapClick();
         },
 
         cancelDrawing: function () {
